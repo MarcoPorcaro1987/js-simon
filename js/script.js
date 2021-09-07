@@ -26,21 +26,19 @@ var sameNumbers = [];
 var num = 0;
 
 // Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
-setTimeout(counter, 0);
+
+setTimeout(counter, 30000);
+
     function counter(){
         for (var i = 0; i < 5; i++) {
             num = userNumbers.push(parseInt(prompt("Inserisci i numeri tra 1 e 100 che ricordi: ")));
         }
-        console.log(userNumbers.join(","));
-        console.log(userNumbers[i]);
-        console.log(userNumbers.length); 
-    // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
-        for (var i = 0; i <= userNumbers.length; i++){
-            if(randomNumbers.includes(userNumbers[i])){
+        // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
+        for (var i = 0; i < userNumbers.length; i++){
+            if(randomNumbers.includes(userNumbers[i]) && !sameNumbers.includes(userNumbers[i])){
                     sameNumbers.push(userNumbers[i]);   
                 }
             }
-        console.log(sameNumbers.length);
         if(sameNumbers.length > 0) {
             alert("Il tuo punteggio è " + sameNumbers.length + " I numeri indovinati sono: " + sameNumbers );
            } else {
